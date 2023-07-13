@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabLayout;
 
+
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements OnDatabaseCallback {
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements OnDatabaseCallbac
 
     Fragment1 fragment1;
     Fragment2 fragment2;
-    Fragment fragment3;
+    Fragment3 fragment3;
 
     BookDatabase database;
 

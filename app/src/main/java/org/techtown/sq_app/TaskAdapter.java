@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
-                            implements OnBookItemClickListener {
-    ArrayList<BookInfo> items = new ArrayList<BookInfo>();
+public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>
+                            implements OnTaskItemClickListener {
+    ArrayList<TaskInfo> items = new ArrayList<TaskInfo>();
 
-    OnBookItemClickListener listener;
+    OnTaskItemClickListener listener;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @NonNull
@@ -30,7 +30,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        BookInfo item = items.get(position);
+        TaskInfo item = items.get(position);
         viewHolder.setItem(item);
     }
 
@@ -39,23 +39,23 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
         return items.size();
     }
 
-    public void addItem(BookInfo item) {
+    public void addItem(TaskInfo item) {
         items.add(item);
     }
 
-    public void setItems(ArrayList<BookInfo> items) {
+    public void setItems(ArrayList<TaskInfo> items) {
         this.items = items;
     }
 
-    public BookInfo getItem(int position) {
+    public TaskInfo getItem(int position) {
         return items.get(position);
     }
 
-    public void setItem(int position, BookInfo item) {
+    public void setItem(int position, TaskInfo item) {
         items.set(position, item);
     }
 
-    public void setOnItemClickListener(OnBookItemClickListener listener) {
+    public void setOnItemClickListener(OnTaskItemClickListener listener) {
         this.listener = listener;
     }
 
@@ -70,7 +70,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
         TextView textView;
 
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-        public ViewHolder(View itemView, final OnBookItemClickListener listener) {
+        public ViewHolder(View itemView, final OnTaskItemClickListener listener) {
             super(itemView);
 
             textView = itemView.findViewById(R.id.textView);
@@ -88,7 +88,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>
 
         }
 
-        public void setItem(BookInfo item) {
+        public void setItem(TaskInfo item) {
             textView.setText(item.getName());
         }
 

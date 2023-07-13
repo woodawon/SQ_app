@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class Fragment2 extends Fragment {
     RecyclerView recyclerView;
-    BookAdapter adapter;
+    TaskAdapter adapter;
 
     OnDatabaseCallback callback;
     static String title, content;
@@ -37,17 +37,17 @@ public class Fragment2 extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new BookAdapter();
+        adapter = new TaskAdapter();
         recyclerView.setAdapter(adapter);
 
-        ArrayList<BookInfo> result = callback.selectAll();
+        ArrayList<TaskInfo> result = callback.selectAll();
         adapter.setItems(result);
 
-        adapter.setOnItemClickListener(new OnBookItemClickListener() {
+        adapter.setOnItemClickListener(new OnTaskItemClickListener() {
             @Override
-            public void onItemClick(BookAdapter.ViewHolder holder, View view, int position) {
+            public void onItemClick(TaskAdapter.ViewHolder holder, View view, int position) {
                 Toast.makeText(getContext(), "문제 풀기 시작" , Toast.LENGTH_LONG).show();
-                BookInfo item = adapter.getItem(position);
+                TaskInfo item = adapter.getItem(position);
                 title = item.getName();
                 content = item.getContents();
             }

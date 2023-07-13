@@ -1,11 +1,11 @@
 package org.techtown.sq_app;
 
-public class BookInfo {
+public class TaskInfo {
 
     String name;
     String contents;
 
-    public BookInfo(String name, String contents) {
+    public TaskInfo(String name, String contents) {
         this.name = name;
         this.contents = contents;
     }

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements OnDatabaseCallbac
     Fragment2 fragment2;
     Fragment3 fragment3;
 
-    BookDatabase database;
+    TaskDatabase database;
 
 
     @Override
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements OnDatabaseCallbac
             database = null;
         }
 
-        database = BookDatabase.getInstance(this);
+        database = TaskDatabase.getInstance(this);
         boolean isOpen = database.open();
         if (isOpen) {
             Log.d(TAG, "Book database is open.");
@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity implements OnDatabaseCallbac
     }
 
     @Override
-    public ArrayList<BookInfo> selectAll() {
-        ArrayList<BookInfo> result = database.selectAll();
+    public ArrayList<TaskInfo> selectAll() {
+        ArrayList<TaskInfo> result = database.selectAll();
 
         return result;
     }

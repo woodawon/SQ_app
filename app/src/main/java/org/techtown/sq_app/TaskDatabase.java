@@ -8,7 +8,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-public class BookDatabase {
+public class TaskDatabase {
 
 	/**
 	 * TAG for debugging
@@ -18,7 +18,7 @@ public class BookDatabase {
 	/**
 	 * Singleton instance
 	 */
-	private static BookDatabase database;
+	private static TaskDatabase database;
 
 
 	/**
@@ -53,14 +53,14 @@ public class BookDatabase {
     /**
      * Constructor
      */
-	private BookDatabase(Context context) {
+	private TaskDatabase(Context context) {
 		this.context = context;
 	}
 
 
-	public static BookDatabase getInstance(Context context) {
+	public static TaskDatabase getInstance(Context context) {
 		if (database == null) {
-			database = new BookDatabase(context);
+			database = new TaskDatabase(context);
 		}
 
 		return database;
@@ -191,8 +191,8 @@ public class BookDatabase {
 		}
 	}
 
-	public ArrayList<BookInfo> selectAll() {
-		ArrayList<BookInfo> result = new ArrayList<BookInfo>();
+	public ArrayList<TaskInfo> selectAll() {
+		ArrayList<TaskInfo> result = new ArrayList<TaskInfo>();
 
 		try {
 			Cursor cursor = db.rawQuery("select NAME, CONTENTS from " + TABLE_BOOK_INFO, null);
@@ -201,7 +201,7 @@ public class BookDatabase {
 				String name = cursor.getString(0);
 				String contents = cursor.getString(1);
 
-				BookInfo info = new BookInfo(name, contents);
+				TaskInfo info = new TaskInfo(name, contents);
 				result.add(info);
 			}
 

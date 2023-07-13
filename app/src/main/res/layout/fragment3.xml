@@ -10,7 +10,10 @@
         android:id="@+id/taskText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:gravity="center_horizontal" />
 
     <EditText
         android:id="@+id/answer"
@@ -19,7 +22,9 @@
         android:layout_below="@id/taskText"
         android:layout_marginTop="35dp"
         android:ems="10"
-        android:hint="답 : "
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:hint="답 :                            "
         android:inputType="textPersonName"
         android:text="" />
 

@@ -31,28 +31,28 @@ public class TaskDatabase {
 	 */
 	public static String TABLE_BOOK_INFO = "BOOK_INFO";
 
-    /**
-     * version
-     */
+	/**
+	 * version
+	 */
 	public static int DATABASE_VERSION = 1;
 
 
-    /**
-     * Helper class defined
-     */
-    private DatabaseHelper dbHelper;
+	/**
+	 * Helper class defined
+	 */
+	private DatabaseHelper dbHelper;
 
-    /**
-     * Database object
-     */
-    private SQLiteDatabase db;
+	/**
+	 * Database object
+	 */
+	private SQLiteDatabase db;
 
 
-    private Context context;
+	private Context context;
 
-    /**
-     * Constructor
-     */
+	/**
+	 * Constructor
+	 */
 	private TaskDatabase(Context context) {
 		this.context = context;
 	}
@@ -71,32 +71,32 @@ public class TaskDatabase {
 	 *
 	 * @return
 	 */
-    public boolean open() {
-    	println("opening database [" + DATABASE_NAME + "].");
+	public boolean open() {
+		println("opening database [" + DATABASE_NAME + "].");
 
-    	dbHelper = new DatabaseHelper(context);
-    	db = dbHelper.getWritableDatabase();
+		dbHelper = new DatabaseHelper(context);
+		db = dbHelper.getWritableDatabase();
 
-    	return true;
-    }
+		return true;
+	}
 
-    /**
-     * close database
-     */
-    public void close() {
-    	println("closing database [" + DATABASE_NAME + "].");
-    	db.close();
-    	database = null;
-    }
+	/**
+	 * close database
+	 */
+	public void close() {
+		println("closing database [" + DATABASE_NAME + "].");
+		db.close();
+		database = null;
+	}
 
-    /**
-     * execute raw query using the input SQL
-     * close the cursor after fetching any result
-     *
-     * @param SQL
-     * @return
-     */
-    public Cursor rawQuery(String SQL) {
+	/**
+	 * execute raw query using the input SQL
+	 * close the cursor after fetching any result
+	 *
+	 * @param SQL
+	 * @return
+	 */
+	public Cursor rawQuery(String SQL) {
 		println("\nexecuteQuery called.\n");
 
 		Cursor c1 = null;
@@ -104,19 +104,19 @@ public class TaskDatabase {
 			c1 = db.rawQuery(SQL, null);
 			println("cursor count : " + c1.getCount());
 		} catch(Exception ex) {
-    		Log.e(TAG, "Exception in executeQuery", ex);
-    	}
+			Log.e(TAG, "Exception in executeQuery", ex);
+		}
 
 		return c1;
 	}
 
-    public boolean execSQL(String SQL) {
+	public boolean execSQL(String SQL) {
 		println("\nexecute called.\n");
 
 		try {
 			Log.d(TAG, "SQL : " + SQL);
 			db.execSQL(SQL);
-	    } catch(Exception ex) {
+		} catch(Exception ex) {
 			Log.e(TAG, "Exception in executeQuery", ex);
 			return false;
 		}
@@ -127,51 +127,51 @@ public class TaskDatabase {
 
 
 
-    private class DatabaseHelper extends SQLiteOpenHelper {
-        public DatabaseHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
+	private class DatabaseHelper extends SQLiteOpenHelper {
+		public DatabaseHelper(Context context) {
+			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		}
 
-        public void onCreate(SQLiteDatabase _db) {
-        	// TABLE_BOOK_INFO
-        	println("creating table [" + TABLE_BOOK_INFO + "].");
+		public void onCreate(SQLiteDatabase _db) {
+			// TABLE_BOOK_INFO
+			println("creating table [" + TABLE_BOOK_INFO + "].");
 
-        	// drop existing table
-        	String DROP_SQL = "drop table if exists " + TABLE_BOOK_INFO;
-        	try {
-        		_db.execSQL(DROP_SQL);
-        	} catch(Exception ex) {
-        		Log.e(TAG, "Exception in DROP_SQL", ex);
-        	}
+			// drop existing table
+			String DROP_SQL = "drop table if exists " + TABLE_BOOK_INFO;
+			try {
+				_db.execSQL(DROP_SQL);
+			} catch(Exception ex) {
+				Log.e(TAG, "Exception in DROP_SQL", ex);
+			}
 
-        	// create table
-        	String CREATE_SQL = "create table " + TABLE_BOOK_INFO + "("
-		        			+ "  _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
-		        			+ "  NAME TEXT, "
-		        			+ "  CONTENTS TEXT, "
-		        			+ "  CREATE_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP "
-		        			+ ")";
-            try {
-            	_db.execSQL(CREATE_SQL);
-            } catch(Exception ex) {
-        		Log.e(TAG, "Exception in CREATE_SQL", ex);
-        	}
+			// create table
+			String CREATE_SQL = "create table " + TABLE_BOOK_INFO + "("
+					+ "  _id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT, "
+					+ "  NAME TEXT, "
+					+ "  CONTENTS TEXT, "
+					+ "  CREATE_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP "
+					+ ")";
+			try {
+				_db.execSQL(CREATE_SQL);
+			} catch(Exception ex) {
+				Log.e(TAG, "Exception in CREATE_SQL", ex);
+			}
 
 		}
 
-        public void onOpen(SQLiteDatabase db) {
-        	println("opened database [" + DATABASE_NAME + "].");
+		public void onOpen(SQLiteDatabase db) {
+			println("opened database [" + DATABASE_NAME + "].");
 
-        }
+		}
 
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        	println("Upgrading database from version " + oldVersion + " to " + newVersion + ".");
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			println("Upgrading database from version " + oldVersion + " to " + newVersion + ".");
 
-        	if (oldVersion < 2) {   // version 1
+			if (oldVersion < 2) {   // version 1
 
-        	}
+			}
 
-        }
+		}
 
 		private void insertRecord(SQLiteDatabase _db, String name, String contents) {
 			try {
@@ -181,7 +181,7 @@ public class TaskDatabase {
 			}
 		}
 
-    }
+	}
 
 	public void insertRecord(String name, String contents) {
 		try {
@@ -212,9 +212,9 @@ public class TaskDatabase {
 		return result;
 	}
 
-    private void println(String msg) {
-    	Log.d(TAG, msg);
-    }
+	private void println(String msg) {
+		Log.d(TAG, msg);
+	}
 
 
 }

@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements OnDatabaseCallbac
         fragment2 = new Fragment2();
         fragment3 = new Fragment3();
 
+        // container 레이아웃에서 앱 시작 시 사용자가 보게 될 fragment 페이지 선정
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment2).commit();
-
 
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.addTab(tabs.newTab().setText("Home"));
